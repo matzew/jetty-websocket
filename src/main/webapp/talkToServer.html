@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Talk to me...</title>
+
+    <script>
+      var globalWebSocket = null;
+    	  globalWebSocket = new WebSocket("ws://localhost:9090/talk/tome");
+    	  globalWebSocket.onmessage = function(evt)
+        {
+          alert("Server told us:  => " + evt.data);
+        };
+        globalWebSocket.onclose = function(evt)
+        {
+          alert("Channel has been closed: " + new Date());
+        };
+      function sendText(element)
+      {
+        var txt = element.value;
+        element.value = "";
+    	  globalWebSocket.send(txt);
+      }
+      function disconnect()
+      {
+    	  globalWebSocket.close();
+      }
+      </script>
+  </head>
+  
+  <body>
+  
+  <p>Type in a few words...</p>
+
+  <input onchange="sendText(this);" id="simpleField" />
+
+  <p>... and tab out...</p>
+
+  </body>
+</html>

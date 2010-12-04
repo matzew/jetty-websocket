@@ -1,0 +1,12 @@
+See WebSocket with Jetty 8.
+
+Simply run 'mvn' (tested with Maven3) and wait for Jetty to launch on localhost:9090
+
+Now point your *modern* browser (e.g. Chromium) to http://localhost:9090/talkToServer.html
+
+That's it...
+
+There is only one Java class. Internally it simply dispatches the incoming message back to the sending
+client.
+
+Have fun!
